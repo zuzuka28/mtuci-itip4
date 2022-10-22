@@ -37,13 +37,6 @@ public class Point3d {
     }
 
     /**
-     * Сравнение двух объектов
-     **/
-    public static boolean compareWith(Point3d point1, Point3d point2) {
-        return point1.getX() == point2.getX() && point1.getY() == point2.getY() && point1.getZ() == point2.getZ();
-    }
-
-    /**
      * Возвращение координаты X
      **/
 
@@ -89,6 +82,18 @@ public class Point3d {
 
     public void setZ(double val) {
         zCoord = val;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Point3d point3d = (Point3d) o;
+
+        if (Double.compare(point3d.xCoord, xCoord) != 0) return false;
+        if (Double.compare(point3d.yCoord, yCoord) != 0) return false;
+        return Double.compare(point3d.zCoord, zCoord) == 0;
     }
 
     /**

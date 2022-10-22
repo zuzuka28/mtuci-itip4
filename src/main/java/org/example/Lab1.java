@@ -2,6 +2,7 @@ package org.example;
 
 import org.apache.commons.math3.util.Precision;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Lab1 {
@@ -31,7 +32,7 @@ public class Lab1 {
 
         scanner.close();
 
-        if (Point3d.compareWith(p1, p2) && Point3d.compareWith(p1, p3) && Point3d.compareWith(p2, p3)) {
+        if (p1.equals(p2) && p1.equals(p2) && p2.equals(p3)) {
             System.out.println();
         } else {
             System.out.println(computeArea(p1, p2, p3));
