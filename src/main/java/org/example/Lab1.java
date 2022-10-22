@@ -32,7 +32,7 @@ public class Lab1 {
 
         scanner.close();
 
-        if (p1.equals(p2) && p1.equals(p2) && p2.equals(p3)) {
+        if (p1.equals(p2) && p1.equals(p3) && p2.equals(p3)) {
             System.out.println();
         } else {
             System.out.println(computeArea(p1, p2, p3));

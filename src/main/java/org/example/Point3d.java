@@ -6,15 +6,7 @@ import org.apache.commons.math3.util.Precision;
  * двумерный класс точки.
  **/
 
-public class Point3d {
-    /**
-     * координата X
-     **/
-    private double xCoord;
-    /**
-     * координата Y
-     **/
-    private double yCoord;
+public class Point3d extends Point2d {
     /**
      * координата Z
      **/
@@ -24,8 +16,7 @@ public class Point3d {
      * Конструктор инициализации
      **/
     public Point3d(double x, double y, double z) {
-        xCoord = x;
-        yCoord = y;
+        super(x, y);
         zCoord = z;
     }
 
@@ -36,44 +27,8 @@ public class Point3d {
         this(0, 0, 0);
     }
 
-    /**
-     * Возвращение координаты X
-     **/
-
-    public double getX() {
-        return xCoord;
-    }
-
-    /**
-     * Возвращение координаты Y
-     **/
-
-    public double getY() {
-        return yCoord;
-    }
-
-    /**
-     * Возвращение координаты Y
-     **/
-
     public double getZ() {
         return zCoord;
-    }
-
-    /**
-     * Установка значения координаты X.
-     **/
-
-    public void setX(double val) {
-        xCoord = val;
-    }
-
-    /**
-     * Установка значения координаты Y.
-     **/
-
-    public void setY(double val) {
-        yCoord = val;
     }
 
     /**
@@ -87,13 +42,19 @@ public class Point3d {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Point3d point3d)) return false;
 
-        Point3d point3d = (Point3d) o;
+        if (
+                Double.compare(point3d.getX(), this.getX()) == 0 &&
+                        Double.compare(point3d.getY(), this.getY()) == 0 &&
+                        Double.compare(point3d.getZ(), this.getZ()) == 0) return true;
+        return false;
+    }
 
-        if (Double.compare(point3d.xCoord, xCoord) != 0) return false;
-        if (Double.compare(point3d.yCoord, yCoord) != 0) return false;
-        return Double.compare(point3d.zCoord, zCoord) == 0;
+    @Override
+    public int hashCode() {
+        long temp = Double.doubleToLongBits(zCoord);
+        return (int) (temp ^ (temp >>> 32));
     }
 
     /**
