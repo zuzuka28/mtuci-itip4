@@ -51,14 +51,8 @@ public class Point3d extends Point2d {
         return false;
     }
 
-    @Override
-    public int hashCode() {
-        long temp = Double.doubleToLongBits(zCoord);
-        return (int) (temp ^ (temp >>> 32));
-    }
-
     /**
-     * Сравнение двух объектов
+     * Расстояние между точками
      **/
     public double distanceTo(Point3d point) {
         return Precision.round(
